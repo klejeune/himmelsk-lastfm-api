@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6B0A070-C682-4798-930D-9F22713EA58E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Himmelsk.LastFmApi</RootNamespace>
+    <AssemblyName>Himmelsk.LastFmApi</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Engine\AbstractCommand.cs" />
+    <Compile Include="Engine\AbstractCredentials.cs" />
+    <Compile Include="Engine\CommandExecuter.cs" />
+    <Compile Include="Engine\Commands\GenericCommand.cs" />
+    <Compile Include="Engine\CommandVerb.cs" />
+    <Compile Include="Engine\Converters\Bool01JsonConverter.cs" />
+    <Compile Include="Engine\Converters\DateTimeUtsJsonConverter.cs" />
+    <Compile Include="Engine\Converters\LowerHyphenJsonConverter.cs" />
+    <Compile Include="Engine\ICommand.cs" />
+    <Compile Include="Engine\ICommandExecuter.cs" />
+    <Compile Include="Engine\ICredentials.cs" />
+    <Compile Include="Engine\IParameter.cs" />
+    <Compile Include="Engine\IParameterRegisterer.cs" />
+    <Compile Include="Engine\Converters\LibCamelCaseContractResolver.cs" />
+    <Compile Include="Engine\Converters\LowercaseContractResolver.cs" />
+    <Compile Include="Engine\Parameter.cs" />
+    <Compile Include="Engine\Results\ApiErrorException.cs" />
+    <Compile Include="Engine\Results\Error.cs" />
+    <Compile Include="Engine\Results\IResult.cs" />
+    <Compile Include="Engine\Results\Result.cs" />
+    <Compile Include="Services\LastFm\Album\IAlbumCommands.cs" />
+    <Compile Include="LastFm.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\LastFm\AlbumCommands.cs" />
+    <Compile Include="Services\LastFm\Auth\AuthCommands.cs" />
+    <Compile Include="Services\LastFm\Auth\IAuthCommands.cs" />
+    <Compile Include="Services\LastFm\Auth\Results\AuthGetMobileSessionResult.cs" />
+    <Compile Include="Services\LastFm\Auth\Results\Lfm.cs" />
+    <Compile Include="Services\LastFm\Credentials\AppCredentials.cs" />
+    <Compile Include="Services\LastFm\Credentials\DesktopTokenCredentials.cs" />
+    <Compile Include="Services\LastFm\Credentials\IAuthenticatedLastFmCredentials.cs" />
+    <Compile Include="Services\LastFm\Credentials\ILastFmCredentials.cs" />
+    <Compile Include="Services\LastFm\Credentials\MobileSessionCredentials.cs" />
+    <Compile Include="Services\LastFm\LastFmCommand.cs" />
+    <Compile Include="Services\LastFm\LastFmCredentials.cs" />
+    <Compile Include="Services\LastFm\Md5.cs" />
+    <Compile Include="Services\LastFm\User\IUserCommands.cs" />
+    <Compile Include="Services\LastFm\User\Results\Album.cs" />
+    <Compile Include="Services\LastFm\User\Results\Artist.cs" />
+    <Compile Include="Services\LastFm\User\Results\Date.cs" />
+    <Compile Include="Services\LastFm\User\Results\RecentTracksAttributes.cs" />
+    <Compile Include="Services\LastFm\User\Results\GetRecentTracksResult.cs" />
+    <Compile Include="Services\LastFm\User\Results\Image.cs" />
+    <Compile Include="Services\LastFm\User\Results\ImageSize.cs" />
+    <Compile Include="Services\LastFm\User\Results\RecentTracks.cs" />
+    <Compile Include="Services\LastFm\User\Results\Track.cs" />
+    <Compile Include="Services\LastFm\User\Results\TrackAttributes.cs" />
+    <Compile Include="Services\LastFm\User\UserCommands.cs" />
+    <Compile Include="Users\GetRecentTracks.cs" />
+    <Compile Include="Users\IUserApi.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\portable-net45+wp80+win8+wpa81+dnxcore50\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
